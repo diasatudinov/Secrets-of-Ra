@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "settingsTextSR.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
