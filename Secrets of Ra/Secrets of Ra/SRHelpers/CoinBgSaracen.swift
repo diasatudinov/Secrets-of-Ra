@@ -1,10 +1,18 @@
+//
+//  CoinBgSaracen.swift
+//  Secrets of Ra
+//
+//  Created by Dias Atudinov on 09.06.2025.
+//
+
+
 import SwiftUI
 
 struct CoinBgSaracen: View {
     @StateObject var user = UserSaracen.shared
     var body: some View {
         ZStack {
-            Image(.moneyViewBgSaracen)
+            Image(.moneyViewBgSR)
                 .resizable()
                 .scaledToFit()
             
@@ -12,7 +20,7 @@ struct CoinBgSaracen: View {
                 .font(.system(size: SaracenDeviceInfo.shared.deviceType == .pad ? 40:20, weight: .black))
                 .foregroundStyle(.white)
                 .textCase(.uppercase)
-                .offset(x: SaracenDeviceInfo.shared.deviceType == .pad ? 50:25, y: SaracenDeviceInfo.shared.deviceType == .pad ? 2:1)
+                .offset(x: SaracenDeviceInfo.shared.deviceType == .pad ? 10:5, y: SaracenDeviceInfo.shared.deviceType == .pad ? 0:0)
             
             
             

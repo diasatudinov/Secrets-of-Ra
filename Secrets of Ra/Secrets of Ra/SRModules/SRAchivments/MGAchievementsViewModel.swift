@@ -1,13 +1,21 @@
+//
+//  MGAchievementsViewModel.swift
+//  Secrets of Ra
+//
+//  Created by Dias Atudinov on 09.06.2025.
+//
+
+
 import SwiftUI
 
 class MGAchievementsViewModel: ObservableObject {
     
     @Published var achievements: [MGAchievement] = [
-        MGAchievement(image: "achieve1ImageMG", isAchieved: false),
-        MGAchievement(image: "achieve2ImageMG", isAchieved: false),
-        MGAchievement(image: "achieve3ImageMG", isAchieved: false),
-        MGAchievement(image: "achieve4ImageMG", isAchieved: false),
-        MGAchievement(image: "achieve5ImageMG", isAchieved: false)
+        MGAchievement(image: "achi1SR", isAchieved: false),
+        MGAchievement(image: "achi2SR", isAchieved: false),
+        MGAchievement(image: "achi3SR", isAchieved: false),
+        MGAchievement(image: "achi4SR", isAchieved: false),
+        MGAchievement(image: "achi5SR", isAchieved: false)
 
     ] {
         didSet {
