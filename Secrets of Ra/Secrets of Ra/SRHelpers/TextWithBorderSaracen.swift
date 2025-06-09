@@ -1,3 +1,11 @@
+//
+//  TextWithBorderSaracen.swift
+//  Secrets of Ra
+//
+//  Created by Dias Atudinov on 09.06.2025.
+//
+
+
 import SwiftUI
 
 struct TextWithBorderSaracen: View {
