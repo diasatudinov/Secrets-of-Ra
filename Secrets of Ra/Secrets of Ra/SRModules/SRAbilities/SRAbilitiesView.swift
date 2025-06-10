@@ -2,17 +2,105 @@
 //  SRAbilitiesView.swift
 //  Secrets of Ra
 //
-//  Created by Dias Atudinov on 10.06.2025.
 //
 
 import SwiftUI
 
 struct SRAbilitiesView: View {
+    @Environment(\.presentationMode) var presentationMode
+    @StateObject var user = UserSaracen.shared
+    @ObservedObject var viewModel: SaracenStoreViewModel
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            VStack {
+                HStack {
+                    HStack(alignment: .top) {
+                        
+                        Button {
+                            presentationMode.wrappedValue.dismiss()
+                            
+                        } label: {
+                            Image(.backIconSR)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 100:50)
+                        }
+                        
+                        
+                        
+                        Spacer()
+                        
+                        CoinBgSaracen()
+                        
+                        Spacer()
+                        Image(.backIconSR)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 100:50)
+                            .opacity(0)
+                    }.padding([.top, .horizontal])
+                }
+                
+                VStack {
+                    ForEach(viewModel.shopTeamItems, id: \.self) { item in
+                        
+                        ZStack {
+                            Image(item.name)
+                                .resizable()
+                                .scaledToFit()
+                            
+                            VStack {
+                                Spacer()
+                                HStack {
+                                    ZStack {
+                                        Image(.levelBgSR)
+                                            .resizable()
+                                            .scaledToFit()
+                                        
+                                        TextWithBorderSaracen(text: "lvl \(item.level)", font: .system(size: SaracenDeviceInfo.shared.deviceType == .pad ? 20:10), textColor: .white, borderColor: .cyan, borderWidth: 1)
+                                    }.frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 100: 50)
+                                    
+                                    Button {
+                                        if user.money >= item.price {
+                                            viewModel.levelIncrease(item: item)
+                                            user.minusUserMoney(for: item.price)
+                                        }
+                                    } label: {
+                                        Image(.priceThousandSR)
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 90: 45)
+                                    }
+                                    
+                                    ZStack {
+                                        Image(.levelBgSR)
+                                            .resizable()
+                                            .scaledToFit()
+                                        
+                                        TextWithBorderSaracen(text: "lvl \(item.level)", font: .system(size: SaracenDeviceInfo.shared.deviceType == .pad ? 20:10), textColor: .white, borderColor: .cyan, borderWidth: 1)
+                                    }.frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 100: 50)
+                                        .opacity(0)
+                                }.padding(.bottom, 25)
+                            }
+                        }.frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 250: 150)
+                        
+                    }
+                }
+                
+                Spacer()
+            }
+        }.background(
+            ZStack {
+                Image(.appBgSR)
+                    .resizable()
+                    .edgesIgnoringSafeArea(.all)
+                    .scaledToFill()
+            }
+        )
     }
 }
 
 #Preview {
-    SRAbilitiesView()
+    SRAbilitiesView(viewModel: SaracenStoreViewModel())
 }
