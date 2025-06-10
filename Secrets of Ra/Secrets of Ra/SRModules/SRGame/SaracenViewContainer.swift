@@ -1,25 +1,25 @@
+//
+//  SaracenViewContainer.swift
+//  Secrets of Ra
+//
+//  Created by Dias Atudinov on 10.06.2025.
+//
+
+
 import SwiftUI
 import SpriteKit
 
 
 struct SaracenViewContainer: UIViewRepresentable {
     @StateObject var user = UserSaracen.shared
-    var scene: SaracenGameScene
-    @Binding var isWin: Bool
-    @Binding var score: Int
+    var scene: GameScene
     var level: Int
+    
     func makeUIView(context: Context) -> SKView {
         let skView = SKView(frame: UIScreen.main.bounds)
         skView.backgroundColor = .clear
         scene.scaleMode = .resizeFill
-        scene.winHandle = {
-            isWin = true
-            user.updateUserMoney(for: 100)
-        }
-        scene.levelIndex = level
-        scene.scoreHandle = {
-            score += 100
-        }
+        scene.currentLevel = level
         skView.presentScene(scene)
         
         return skView

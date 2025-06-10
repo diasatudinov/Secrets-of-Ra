@@ -2,14 +2,83 @@
 //  SRGameLevelsView.swift
 //  Secrets of Ra
 //
-//  Created by Dias Atudinov on 10.06.2025.
 //
 
 import SwiftUI
 
 struct SRGameLevelsView: View {
+    @Environment(\.presentationMode) var presentationMode
+    @StateObject var user = UserSaracen.shared
+    @State var currentIndex: Int?
+    @State var showGame = false
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            VStack {
+                HStack {
+                    HStack(alignment: .top) {
+                        
+                        Button {
+                            presentationMode.wrappedValue.dismiss()
+                            
+                        } label: {
+                            Image(.backIconSR)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 100:50)
+                        }
+                        
+                        
+                        
+                        Spacer()
+                        
+                        CoinBgSaracen()
+                        
+                        Spacer()
+                        Image(.backIconSR)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 100:50)
+                            .opacity(0)
+                    }.padding([.top, .horizontal])
+                }
+                
+                let columns = Array(repeating: GridItem(.flexible(), spacing: 0), count: 2)
+                
+                ScrollView {
+                    VStack {
+                        LazyVGrid(columns: columns, spacing: 0) {
+                            ForEach(Range(0...9)) { index in
+                                ZStack {
+                                    Image(.levelNumBgSR)
+                                        .resizable()
+                                        .scaledToFit()
+                                    TextWithBorderSaracen(text: "\(index + 1)", font: .system(size: SaracenDeviceInfo.shared.deviceType == .pad ? 70:39), textColor: .white, borderColor: .red, borderWidth: 1)
+                                }.frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 200:100)
+                                    .onTapGesture {
+                                        showGame = true
+                                        DispatchQueue.main.async {
+                                            currentIndex = index
+                                        }
+                                    }
+                            }
+                        }
+                    }
+                }
+            }
+        }.background(
+            ZStack {
+                Image(.appBgSR)
+                    .resizable()
+                    .edgesIgnoringSafeArea(.all)
+                    .scaledToFill()
+            }
+        )
+        .fullScreenCover(isPresented: $showGame) {
+            if let currentIndex = currentIndex {
+                SRGameView(level: currentIndex)
+            }
+        }
+        
     }
 }
 

@@ -14,9 +14,9 @@ struct SRMenuView: View {
     @State private var showDailyTask = false
 
     
-//    @StateObject var achievementVM = AchievementsViewModelSaracen()
-//    @StateObject var settingsVM = OptionsViewModelSaracen()
-//    @StateObject var shopVM = SaracenStoreViewModel()
+    @StateObject var achievementVM = MGAchievementsViewModel()
+    @StateObject var settingsVM = SettingsViewModelSG()
+    @StateObject var shopVM = SaracenStoreViewModel()
     
     var body: some View {
         
@@ -122,32 +122,20 @@ struct SRMenuView: View {
                     .scaledToFill()
             }
         )
-//        .onAppear {
-//            if settingsVM.musicEnabled {
-//                GEMusicManager.shared.playBackgroundMusic()
-//            }
-//        }
-//        .onChange(of: settingsVM.musicEnabled) { enabled in
-//            if enabled {
-//                GEMusicManager.shared.playBackgroundMusic()
-//            } else {
-//                GEMusicManager.shared.stopBackgroundMusic()
-//            }
-//        }
         .fullScreenCover(isPresented: $showGame) {
 //            SaracenGameLevelsView(shopVM: shopVM)
         }
         .fullScreenCover(isPresented: $showAbility) {
-//            SaracenMiniGamesChooseView()
+            SRAbilitiesView(viewModel: shopVM)
         }
         .fullScreenCover(isPresented: $showAchievement) {
-//            SaracenAchievementsView(viewModel: achievementVM)
+            SRAchivementsView(viewModel: achievementVM)
         }
         .fullScreenCover(isPresented: $showSettings) {
-//            SaracenOptionsView(settingsVM: settingsVM)
+            SRSettingsView(settingsVM: settingsVM)
         }.fullScreenCover(isPresented: $showDailyTask) {
-            //            SaracenOptionsView(settingsVM: settingsVM)
-                    }
+            SRDailyTaskView()
+        }
         
         
         
