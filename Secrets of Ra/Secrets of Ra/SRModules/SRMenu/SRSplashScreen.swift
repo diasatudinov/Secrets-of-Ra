@@ -11,7 +11,7 @@ struct SRSplashScreen: View {
     @State private var progress: CGFloat = 0.0
     @State private var timer: Timer?
     private var loaderWidth: CGFloat = {
-       return SaracenDeviceInfo.shared.deviceType == .pad ? 500:250
+       return SRDeviceInfo.shared.deviceType == .pad ? 500:250
     }()
     var body: some View {
         ZStack {
@@ -28,17 +28,17 @@ struct SRSplashScreen: View {
                     
                     
                 }
-                .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 400:400)
-                .padding(.top, SaracenDeviceInfo.shared.deviceType == .pad ? 100:70)
+                .frame(height: SRDeviceInfo.shared.deviceType == .pad ? 400:400)
+                .padding(.top, SRDeviceInfo.shared.deviceType == .pad ? 100:70)
                 
                 Image(.subtitleImgSR)
                     .resizable()
                     .scaledToFit()
-                    .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 164:82)
+                    .frame(height: SRDeviceInfo.shared.deviceType == .pad ? 164:82)
                     .padding(.vertical, 50)
                 
                
-                TextWithBorderSaracen(text: "\(Int(progress))%", font: .system(size: 39, weight: .regular), textColor: .white, borderColor: .bordovyi, borderWidth: 1)
+                TextWithBorderSR(text: "\(Int(progress))%", font: .system(size: 39, weight: .regular), textColor: .white, borderColor: .bordovyi, borderWidth: 1)
                 
                 Spacer()
             }

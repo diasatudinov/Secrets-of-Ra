@@ -1,5 +1,4 @@
 //
-//  ArgosyWV.swift
 //  Secrets of Ra
 //
 //
@@ -59,7 +58,7 @@ struct SRWV: UIViewRepresentable {
     }
 }
 
-struct ArgosyWVWrap: View {
+struct SRWVWrap: View {
     @State private var nAllow = true
     var urlString = ""
     @AppStorage("firstOpen") var firstOpen = true

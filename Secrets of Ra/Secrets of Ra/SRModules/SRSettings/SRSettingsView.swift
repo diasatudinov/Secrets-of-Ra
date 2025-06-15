@@ -9,7 +9,7 @@ import SwiftUI
 struct SRSettingsView: View {
     @Environment(\.presentationMode) var presentationMode
 
-    @ObservedObject var settingsVM: SettingsViewModelSG
+    @ObservedObject var settingsVM: SettingsViewModelSR
     var body: some View {
         ZStack {
             
@@ -24,7 +24,7 @@ struct SRSettingsView: View {
                         Image(.soundsTextSR)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 60:31)
+                            .frame(height: SRDeviceInfo.shared.deviceType == .pad ? 60:31)
                         Button {
                             withAnimation {
                                 settingsVM.soundEnabled.toggle()
@@ -34,7 +34,7 @@ struct SRSettingsView: View {
                             Image(settingsVM.soundEnabled ? .onSR:.offSR)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 80:44)
+                                .frame(height: SRDeviceInfo.shared.deviceType == .pad ? 80:44)
                         }
                         
                     }
@@ -43,7 +43,7 @@ struct SRSettingsView: View {
                         Image(.musicTextSR)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 60:31)
+                            .frame(height: SRDeviceInfo.shared.deviceType == .pad ? 60:31)
                         
                         Button {
                             withAnimation {
@@ -54,14 +54,14 @@ struct SRSettingsView: View {
                             Image(settingsVM.musicEnabled ? .onSR:.offSR)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 80:44)
+                                .frame(height: SRDeviceInfo.shared.deviceType == .pad ? 80:44)
                         }
                         
                     }
                     
                 }
                 
-            }.frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 800:400)
+            }.frame(height: SRDeviceInfo.shared.deviceType == .pad ? 800:400)
             
             VStack {
                 HStack {
@@ -73,7 +73,7 @@ struct SRSettingsView: View {
                             Image(.backIconSR)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 150:75)
+                                .frame(height: SRDeviceInfo.shared.deviceType == .pad ? 150:75)
                         }
                         Spacer()
                        
@@ -85,7 +85,7 @@ struct SRSettingsView: View {
                         Image(.backIconSR)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 150:75)
+                            .frame(height: SRDeviceInfo.shared.deviceType == .pad ? 150:75)
                             .opacity(0)
                     }.padding([.horizontal, .top])
                 }
@@ -103,5 +103,5 @@ struct SRSettingsView: View {
 }
 
 #Preview {
-    SRSettingsView(settingsVM: SettingsViewModelSG())
+    SRSettingsView(settingsVM: SettingsViewModelSR())
 }
