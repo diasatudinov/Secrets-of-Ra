@@ -11,7 +11,7 @@ import SpriteKit
 //ball_level
 
 // MARK: - SpriteKit Scene with vertical layout and background
-class GameScene: SKScene {
+class SRGameScene: SKScene {
     
     var currentLevel: Int = 0
     
@@ -89,7 +89,7 @@ class GameScene: SKScene {
         addChild(customerNode)
 
         // Orders right of customer
-        orders = GameScene.scenarios[currentLevel]
+        orders = SRGameScene.scenarios[currentLevel]
         let spacing: CGFloat = 80
         var idx = 0
         for (type, qty) in orders {
@@ -102,6 +102,7 @@ class GameScene: SKScene {
             let label = SKLabelNode(text: "x\(qty)")
             label.fontSize = 18
             label.fontColor = .black
+            label.fontName = UIFont.boldSystemFont(ofSize: 18).fontName
             label.position = CGPoint(x: 0, y: -icon.size.height/2 - 12)
             icon.addChild(label)
 
@@ -232,21 +233,6 @@ class GameScene: SKScene {
         guard let loc = touches.first?.location(in: self), let fig = draggedNode else { return }
         fig.position = loc
     }
-
-//    guard let fig = draggedNode else { return }
-//    defer { draggedNode = nil; fig.zPosition = 0 }
-//    // Try delivery first
-//    tryDeliver(fig)
-//    // If still in scene and not delivered, try merge
-//    if parent != nil {
-//        if let slot = nearestSlot(to: fig.position),
-//           let other = gridNodes[slot.0][slot.1], other !== fig,
-//           other.type.level == fig.type.level {
-//            performMerge(fig, with: other, at: slot)
-//        } else if let orig = originalPos {
-//            fig.run(SKAction.move(to: orig, duration: 0.2))
-//        }
-//    }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let fig = draggedNode else { return }

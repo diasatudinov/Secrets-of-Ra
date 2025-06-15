@@ -8,7 +8,7 @@ import SwiftUI
 
 struct SRGameLevelsView: View {
     @Environment(\.presentationMode) var presentationMode
-    @StateObject var user = UserSaracen.shared
+    @StateObject var user = UserSR.shared
     @State var currentIndex: Int?
     @State var showGame = false
     var body: some View {
@@ -24,20 +24,20 @@ struct SRGameLevelsView: View {
                             Image(.backIconSR)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 100:50)
+                                .frame(height: SRDeviceInfo.shared.deviceType == .pad ? 100:50)
                         }
                         
                         
                         
                         Spacer()
                         
-                        CoinBgSaracen()
+                        CoinBgSR()
                         
                         Spacer()
                         Image(.backIconSR)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 100:50)
+                            .frame(height: SRDeviceInfo.shared.deviceType == .pad ? 100:50)
                             .opacity(0)
                     }.padding([.top, .horizontal])
                 }
@@ -52,8 +52,8 @@ struct SRGameLevelsView: View {
                                     Image(.levelNumBgSR)
                                         .resizable()
                                         .scaledToFit()
-                                    TextWithBorderSaracen(text: "\(index + 1)", font: .system(size: SaracenDeviceInfo.shared.deviceType == .pad ? 70:39), textColor: .white, borderColor: .red, borderWidth: 1)
-                                }.frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 200:100)
+                                    TextWithBorderSR(text: "\(index + 1)", font: .system(size: SRDeviceInfo.shared.deviceType == .pad ? 70:39), textColor: .white, borderColor: .red, borderWidth: 1)
+                                }.frame(height: SRDeviceInfo.shared.deviceType == .pad ? 200:100)
                                     .onTapGesture {
                                         showGame = true
                                         DispatchQueue.main.async {
@@ -75,7 +75,9 @@ struct SRGameLevelsView: View {
         )
         .fullScreenCover(isPresented: $showGame) {
             if let currentIndex = currentIndex {
-                SRGameView(level: currentIndex)
+                SRGameView(level: currentIndex) {
+                    self.currentIndex = nil
+                }
             }
         }
         

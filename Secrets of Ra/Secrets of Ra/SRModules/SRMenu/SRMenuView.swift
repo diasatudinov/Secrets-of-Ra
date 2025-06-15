@@ -14,9 +14,9 @@ struct SRMenuView: View {
     @State private var showDailyTask = false
 
     
-    @StateObject var achievementVM = MGAchievementsViewModel()
-    @StateObject var settingsVM = SettingsViewModelSG()
-    @StateObject var shopVM = SaracenStoreViewModel()
+    @StateObject var achievementVM = SRAchievementsViewModel()
+    @StateObject var settingsVM = SettingsViewModelSR()
+    @StateObject var shopVM = SRAbilitiesViewModel()
     
     var body: some View {
         
@@ -26,12 +26,12 @@ struct SRMenuView: View {
                     Image(.settingsIconSR)
                         .resizable()
                         .scaledToFit()
-                        .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 130:65)
+                        .frame(height: SRDeviceInfo.shared.deviceType == .pad ? 130:65)
                         .opacity(0)
                     
                     Spacer()
                     
-                    CoinBgSaracen()
+                    CoinBgSR()
                     
                     Spacer()
                     
@@ -41,7 +41,7 @@ struct SRMenuView: View {
                         Image(.settingsIconSR)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 130:65)
+                            .frame(height: SRDeviceInfo.shared.deviceType == .pad ? 130:65)
                     }
                     
                 }
@@ -49,7 +49,7 @@ struct SRMenuView: View {
                 Image(.logoIconSR)
                     .resizable()
                     .scaledToFit()
-                    .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 320:160)
+                    .frame(height: SRDeviceInfo.shared.deviceType == .pad ? 320:160)
                 
                 VStack(spacing:0) {
                     Button {
@@ -61,7 +61,7 @@ struct SRMenuView: View {
                             Image(.levelsIconSR)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 210:150)
+                                .frame(height: SRDeviceInfo.shared.deviceType == .pad ? 210:150)
                             
                             
                                 
@@ -76,7 +76,7 @@ struct SRMenuView: View {
                             Image(.abilityIconSR)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 180:100)
+                                .frame(height: SRDeviceInfo.shared.deviceType == .pad ? 180:100)
                             
                             
                                 
@@ -90,7 +90,7 @@ struct SRMenuView: View {
                             Image(.dailyTaskIconSR)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 180:100)
+                                .frame(height: SRDeviceInfo.shared.deviceType == .pad ? 180:100)
                             
                             
                                 
@@ -104,7 +104,7 @@ struct SRMenuView: View {
                             Image(.achiIconSR)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 180:100)
+                                .frame(height: SRDeviceInfo.shared.deviceType == .pad ? 180:100)
                             
                         }
                     }
@@ -123,7 +123,7 @@ struct SRMenuView: View {
             }
         )
         .fullScreenCover(isPresented: $showGame) {
-//            SaracenGameLevelsView(shopVM: shopVM)
+            SRGameLevelsView()
         }
         .fullScreenCover(isPresented: $showAbility) {
             SRAbilitiesView(viewModel: shopVM)

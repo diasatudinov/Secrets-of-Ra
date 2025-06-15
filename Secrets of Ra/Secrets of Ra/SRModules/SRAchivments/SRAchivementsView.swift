@@ -7,10 +7,10 @@
 import SwiftUI
 
 struct SRAchivementsView: View {
-    @StateObject var user = UserSaracen.shared
+    @StateObject var user = UserSR.shared
     @Environment(\.presentationMode) var presentationMode
 
-    @ObservedObject var viewModel: MGAchievementsViewModel
+    @ObservedObject var viewModel: SRAchievementsViewModel
     var body: some View {
         ZStack {
             
@@ -25,7 +25,7 @@ struct SRAchivementsView: View {
                             Image(.backIconSR)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 100:50)
+                                .frame(height: SRDeviceInfo.shared.deviceType == .pad ? 100:50)
                         }
                         
                         
@@ -40,7 +40,7 @@ struct SRAchivementsView: View {
                         Image(.backIconSR)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 100:50)
+                            .frame(height: SRDeviceInfo.shared.deviceType == .pad ? 100:50)
                             .opacity(0)
                     }.padding([.top, .horizontal])
                 }
@@ -69,14 +69,13 @@ struct SRAchivementsView: View {
         )
     }
     
-    @ViewBuilder func achievementItem(item: MGAchievement) -> some View {
+    @ViewBuilder func achievementItem(item: SRAchievement) -> some View {
         ZStack {
             VStack(spacing: 0) {
                 Image(item.isAchieved ? item.image:"\(item.image)Off")
                     .resizable()
                     .scaledToFit()
-                
-                
+            
             }
             
             VStack {
@@ -91,14 +90,14 @@ struct SRAchivementsView: View {
                     Image(.priceHundredSR)
                         .resizable()
                         .scaledToFit()
-                        .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 100:50)
+                        .frame(height: SRDeviceInfo.shared.deviceType == .pad ? 100:50)
                 }
             }
-        }.frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 400:200)
+        }.frame(height: SRDeviceInfo.shared.deviceType == .pad ? 350:200)
     }
     
 }
 
 #Preview {
-    SRAchivementsView(viewModel: MGAchievementsViewModel())
+    SRAchivementsView(viewModel: SRAchievementsViewModel())
 }

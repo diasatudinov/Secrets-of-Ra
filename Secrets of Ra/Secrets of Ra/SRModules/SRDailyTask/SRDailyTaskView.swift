@@ -22,7 +22,7 @@ struct SRDailyTaskView: View {
                             Image(.backIconSR)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 100:50)
+                                .frame(height: SRDeviceInfo.shared.deviceType == .pad ? 100:50)
                         }
                         
                         
@@ -37,7 +37,7 @@ struct SRDailyTaskView: View {
                         Image(.backIconSR)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 100:50)
+                            .frame(height: SRDeviceInfo.shared.deviceType == .pad ? 100:50)
                             .opacity(0)
                     }.padding([.top, .horizontal])
                 }
@@ -54,11 +54,11 @@ struct SRDailyTaskView: View {
                             Image(.priceHundredSR)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 100:50)
+                                .frame(height: SRDeviceInfo.shared.deviceType == .pad ? 100:50)
                                 .padding(.bottom, 30)
                         }
                         
-                    }.frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 300:150)
+                    }.frame(height: SRDeviceInfo.shared.deviceType == .pad ? 300:150)
                     
                     ZStack {
                         Image(.task2TextSR)
@@ -70,11 +70,11 @@ struct SRDailyTaskView: View {
                             Image(.priceHundredSR)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 100:50)
+                                .frame(height: SRDeviceInfo.shared.deviceType == .pad ? 100:50)
                                 .padding(.bottom, 30)
                         }
                         
-                    }.frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 300:150)
+                    }.frame(height: SRDeviceInfo.shared.deviceType == .pad ? 300:150)
                     
                     ZStack {
                         Image(.task3TextSR)
@@ -86,11 +86,11 @@ struct SRDailyTaskView: View {
                             Image(.priceHundredSR)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 100:50)
+                                .frame(height: SRDeviceInfo.shared.deviceType == .pad ? 100:50)
                                 .padding(.bottom, 30)
                         }
                         
-                    }.frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 300:150)
+                    }.frame(height: SRDeviceInfo.shared.deviceType == .pad ? 300:150)
                 }
                 
                 Spacer()
