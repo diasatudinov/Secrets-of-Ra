@@ -1,5 +1,4 @@
 //
-//  SaracenDeviceInfo.swift
 //  Secrets of Ra
 //
 //

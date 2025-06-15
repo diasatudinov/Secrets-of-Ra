@@ -8,9 +8,12 @@ import SwiftUI
 
 @main
 struct Secrets_of_RaApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SRRoot()
+                .preferredColorScheme(.light)
         }
     }
 }

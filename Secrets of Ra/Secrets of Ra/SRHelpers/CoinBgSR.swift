@@ -1,5 +1,4 @@
 //
-//  CoinBgSaracen.swift
 //  Secrets of Ra
 //
 //
@@ -8,7 +7,7 @@
 import SwiftUI
 
 struct CoinBgSR: View {
-    @StateObject var user = UserSaracen.shared
+    @StateObject var user = UserSR.shared
     var body: some View {
         ZStack {
             Image(.moneyViewBgSR)
@@ -16,14 +15,14 @@ struct CoinBgSR: View {
                 .scaledToFit()
             
             Text("\(user.money)")
-                .font(.system(size: SaracenDeviceInfo.shared.deviceType == .pad ? 40:20, weight: .black))
+                .font(.system(size: SRDeviceInfo.shared.deviceType == .pad ? 40:20, weight: .black))
                 .foregroundStyle(.white)
                 .textCase(.uppercase)
-                .offset(x: SaracenDeviceInfo.shared.deviceType == .pad ? 10:5, y: SaracenDeviceInfo.shared.deviceType == .pad ? 0:0)
+                .offset(x: SRDeviceInfo.shared.deviceType == .pad ? 10:5, y: SRDeviceInfo.shared.deviceType == .pad ? 0:0)
             
             
             
-        }.frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 100:50)
+        }.frame(height: SRDeviceInfo.shared.deviceType == .pad ? 100:50)
         
     }
 }

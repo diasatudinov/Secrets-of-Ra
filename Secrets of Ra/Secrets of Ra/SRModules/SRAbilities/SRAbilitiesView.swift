@@ -8,8 +8,8 @@ import SwiftUI
 
 struct SRAbilitiesView: View {
     @Environment(\.presentationMode) var presentationMode
-    @StateObject var user = UserSaracen.shared
-    @ObservedObject var viewModel: SaracenStoreViewModel
+    @StateObject var user = UserSR.shared
+    @ObservedObject var viewModel: SRAbilitiesViewModel
     
     var body: some View {
         ZStack {
@@ -24,20 +24,20 @@ struct SRAbilitiesView: View {
                             Image(.backIconSR)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 100:50)
+                                .frame(height: SRDeviceInfo.shared.deviceType == .pad ? 100:50)
                         }
                         
                         
                         
                         Spacer()
                         
-                        CoinBgSaracen()
+                        CoinBgSR()
                         
                         Spacer()
                         Image(.backIconSR)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 100:50)
+                            .frame(height: SRDeviceInfo.shared.deviceType == .pad ? 100:50)
                             .opacity(0)
                     }.padding([.top, .horizontal])
                 }
@@ -58,8 +58,8 @@ struct SRAbilitiesView: View {
                                             .resizable()
                                             .scaledToFit()
                                         
-                                        TextWithBorderSaracen(text: "lvl \(item.level)", font: .system(size: SaracenDeviceInfo.shared.deviceType == .pad ? 20:10), textColor: .white, borderColor: .cyan, borderWidth: 1)
-                                    }.frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 100: 50)
+                                        TextWithBorderSR(text: "lvl \(item.level)", font: .system(size: SRDeviceInfo.shared.deviceType == .pad ? 20:10), textColor: .white, borderColor: .cyan, borderWidth: 1)
+                                    }.frame(height: SRDeviceInfo.shared.deviceType == .pad ? 100: 50)
                                     
                                     Button {
                                         if user.money >= item.price {
@@ -70,7 +70,7 @@ struct SRAbilitiesView: View {
                                         Image(.priceThousandSR)
                                             .resizable()
                                             .scaledToFit()
-                                            .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 90: 45)
+                                            .frame(height: SRDeviceInfo.shared.deviceType == .pad ? 90: 45)
                                     }
                                     
                                     ZStack {
@@ -78,12 +78,12 @@ struct SRAbilitiesView: View {
                                             .resizable()
                                             .scaledToFit()
                                         
-                                        TextWithBorderSaracen(text: "lvl \(item.level)", font: .system(size: SaracenDeviceInfo.shared.deviceType == .pad ? 20:10), textColor: .white, borderColor: .cyan, borderWidth: 1)
-                                    }.frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 100: 50)
+                                        TextWithBorderSR(text: "lvl \(item.level)", font: .system(size: SRDeviceInfo.shared.deviceType == .pad ? 20:10), textColor: .white, borderColor: .cyan, borderWidth: 1)
+                                    }.frame(height: SRDeviceInfo.shared.deviceType == .pad ? 100: 50)
                                         .opacity(0)
                                 }.padding(.bottom, 25)
                             }
-                        }.frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 250: 150)
+                        }.frame(height: SRDeviceInfo.shared.deviceType == .pad ? 250: 150)
                         
                     }
                 }
@@ -102,5 +102,5 @@ struct SRAbilitiesView: View {
 }
 
 #Preview {
-    SRAbilitiesView(viewModel: SaracenStoreViewModel())
+    SRAbilitiesView(viewModel: SRAbilitiesViewModel())
 }
