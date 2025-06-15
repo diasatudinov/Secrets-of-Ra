@@ -1,8 +1,6 @@
 //
-//  ArgosyRoot.swift
 //  Secrets of Ra
 //
-//  Created by Dias Atudinov on 15.06.2025.
 //
 
 

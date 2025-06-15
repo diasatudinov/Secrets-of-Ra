@@ -11,12 +11,13 @@ struct SRGameView: View {
     @Environment(\.presentationMode) var presentationMode
 
     let level: Int
+    var backBtnHandle: (() -> ())
     @State private var gameWon = false
    
     
-    @State var gameScene: GameScene = {
+    @State var gameScene: SRGameScene = {
         
-        let scene = GameScene(size: UIScreen.main.bounds.size)
+        let scene = SRGameScene(size: UIScreen.main.bounds.size)
         scene.scaleMode = .resizeFill
         return scene
     }()
@@ -32,22 +33,22 @@ struct SRGameView: View {
                         Image(.chest1SR)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 120:70)
+                            .frame(height: SRDeviceInfo.shared.deviceType == .pad ? 120:70)
                         
                         Image(.chest1SR)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 120:70)
+                            .frame(height: SRDeviceInfo.shared.deviceType == .pad ? 120:70)
                         Spacer()
                         Image(.chest1SR)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 120:70)
+                            .frame(height: SRDeviceInfo.shared.deviceType == .pad ? 120:70)
                         
                         Image(.chest1SR)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 120:70)
+                            .frame(height: SRDeviceInfo.shared.deviceType == .pad ? 120:70)
                     }
                 }.ignoresSafeArea()
                 VStack {
@@ -55,12 +56,12 @@ struct SRGameView: View {
                         
                         Button {
                             presentationMode.wrappedValue.dismiss()
-                            
+                            backBtnHandle()
                         } label: {
                             Image(.backIconSR)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 100:50)
+                                .frame(height: SRDeviceInfo.shared.deviceType == .pad ? 100:50)
                         }
                         
                         
@@ -68,29 +69,47 @@ struct SRGameView: View {
                         Image(.backIconSR)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: SaracenDeviceInfo.shared.deviceType == .pad ? 100:50)
+                            .frame(height: SRDeviceInfo.shared.deviceType == .pad ? 100:50)
                             .opacity(0)
                     }.padding([.top, .horizontal])
                     
-                    SaracenViewContainer(scene: gameScene, level: level)
+                    SRViewContainer(scene: gameScene, level: level)
                         .ignoresSafeArea(edges: .bottom)
                         
                 }
+                
                 if gameWon {
-                    VStack {
-                        Text("Победа!")
-                            .font(.largeTitle)
-                            .fontWeight(.bold)
-                            .foregroundColor(.yellow)
-                            .shadow(radius: 10)
-                        Button(action: restartGame) {
-                            Text("Играть заново")
-                                .font(.headline)
-                                .padding(.horizontal, 24)
-                                .padding(.vertical, 12)
-                                .background(Color.blue.opacity(0.8))
-                                .foregroundColor(.white)
-                                .cornerRadius(10)
+                    Color.black.opacity(0.5).ignoresSafeArea()
+                    VStack(spacing: 50) {
+                        Image(.winTextSR)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: SRDeviceInfo.shared.deviceType == .pad ? 250:150)
+                        
+                        
+                        Image(.priceHundredSR)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: SRDeviceInfo.shared.deviceType == .pad ? 100:50)
+                        
+                        VStack {
+                            Button {
+                                presentationMode.wrappedValue.dismiss()
+                            } label: {
+                                Image(.continueTextSR)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(height: SRDeviceInfo.shared.deviceType == .pad ? 200:100)
+                            }
+                            
+                            Button {
+                                presentationMode.wrappedValue.dismiss()
+                            } label: {
+                                Image(.menuTextSR)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(height: SRDeviceInfo.shared.deviceType == .pad ? 200:100)
+                            }
                         }
                     }
                 }
@@ -105,6 +124,7 @@ struct SRGameView: View {
             )
             .onReceive(NotificationCenter.default.publisher(for: .gameWon)) { _ in
                 gameWon = true
+                UserSR.shared.updateUserMoney(for: 100)
             }
         }
     }
@@ -118,7 +138,7 @@ struct SRGameView: View {
 }
 
 #Preview {
-    SRGameView(level: 1)
+    SRGameView(level: 1, backBtnHandle: { })
 }
 
 extension Notification.Name {

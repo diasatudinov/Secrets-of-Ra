@@ -1,5 +1,4 @@
 //
-//  SettingsViewModelSG.swift
 //  Secrets of Ra
 //
 //
