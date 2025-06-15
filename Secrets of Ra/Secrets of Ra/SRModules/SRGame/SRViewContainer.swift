@@ -2,7 +2,6 @@
 //  SaracenViewContainer.swift
 //  Secrets of Ra
 //
-//  Created by Dias Atudinov on 10.06.2025.
 //
 
 
@@ -10,9 +9,9 @@ import SwiftUI
 import SpriteKit
 
 
-struct SaracenViewContainer: UIViewRepresentable {
-    @StateObject var user = UserSaracen.shared
-    var scene: GameScene
+struct SRViewContainer: UIViewRepresentable {
+    @StateObject var user = UserSR.shared
+    var scene: SRGameScene
     var level: Int
     
     func makeUIView(context: Context) -> SKView {

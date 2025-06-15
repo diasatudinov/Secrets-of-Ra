@@ -7,8 +7,8 @@
 
 import UIKit
 
-class SaracenDeviceInfo {
-    static let shared = SaracenDeviceInfo()
+class SRDeviceInfo {
+    static let shared = SRDeviceInfo()
     
     var deviceType: UIUserInterfaceIdiom
     

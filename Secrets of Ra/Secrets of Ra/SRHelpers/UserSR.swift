@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-class UserSaracen: ObservableObject {
+class UserSR: ObservableObject {
     
-    static let shared = UserSaracen()
+    static let shared = UserSR()
     
     @AppStorage("money") var storedMoney: Int = 100
     @Published var money: Int = 100

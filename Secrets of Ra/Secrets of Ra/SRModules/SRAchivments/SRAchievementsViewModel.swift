@@ -1,5 +1,5 @@
 //
-//  MGAchievementsViewModel.swift
+//  SRAchievementsViewModel.swift
 //  Secrets of Ra
 //
 //
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class MGAchievementsViewModel: ObservableObject {
+class SRAchievementsViewModel: ObservableObject {
     
     @Published var achievements: [MGAchievement] = [
         MGAchievement(image: "achi1SR", isAchieved: false),

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TextWithBorderSaracen: View {
+struct TextWithBorderSR: View {
     let text: String
     let font: Font
     let textColor: Color

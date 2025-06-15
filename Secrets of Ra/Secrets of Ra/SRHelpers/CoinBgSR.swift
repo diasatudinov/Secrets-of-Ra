@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CoinBgSaracen: View {
+struct CoinBgSR: View {
     @StateObject var user = UserSaracen.shared
     var body: some View {
         ZStack {
@@ -29,5 +29,5 @@ struct CoinBgSaracen: View {
 }
 
 #Preview {
-    CoinBgSaracen()
+    CoinBgSR()
 }

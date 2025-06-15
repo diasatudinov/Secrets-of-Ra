@@ -6,7 +6,7 @@
 
 import SwiftUI
 
-class SaracenStoreViewModel: ObservableObject {
+class SRAbilitiesViewModel: ObservableObject {
     @Published var shopTeamItems: [ItemSaracen] = [
         
         ItemSaracen(name: "bgItem1IconSR", level: 0, price: 1000),
