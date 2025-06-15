@@ -1,5 +1,4 @@
 //
-//  TextWithBorderSaracen.swift
 //  Secrets of Ra
 //
 //

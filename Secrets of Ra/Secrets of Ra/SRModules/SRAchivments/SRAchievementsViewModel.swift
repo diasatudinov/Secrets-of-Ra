@@ -9,12 +9,12 @@ import SwiftUI
 
 class SRAchievementsViewModel: ObservableObject {
     
-    @Published var achievements: [MGAchievement] = [
-        MGAchievement(image: "achi1SR", isAchieved: false),
-        MGAchievement(image: "achi2SR", isAchieved: false),
-        MGAchievement(image: "achi3SR", isAchieved: false),
-        MGAchievement(image: "achi4SR", isAchieved: false),
-        MGAchievement(image: "achi5SR", isAchieved: false)
+    @Published var achievements: [SRAchievement] = [
+        SRAchievement(image: "achi1SR", isAchieved: false),
+        SRAchievement(image: "achi2SR", isAchieved: false),
+        SRAchievement(image: "achi3SR", isAchieved: false),
+        SRAchievement(image: "achi4SR", isAchieved: false),
+        SRAchievement(image: "achi5SR", isAchieved: false)
 
     ] {
         didSet {
@@ -27,9 +27,9 @@ class SRAchievementsViewModel: ObservableObject {
         
     }
     
-    private let userDefaultsAchievementsKey = "achievementsKeyMG"
+    private let userDefaultsAchievementsKey = "achievementsKeySR"
     
-    func achieveToggle(_ achive: MGAchievement) {
+    func achieveToggle(_ achive: SRAchievement) {
         guard let index = achievements.firstIndex(where: { $0.id == achive.id })
         else {
             return
@@ -48,7 +48,7 @@ class SRAchievementsViewModel: ObservableObject {
     
     func loadAchievementsItem() {
         if let savedData = UserDefaults.standard.data(forKey: userDefaultsAchievementsKey),
-           let loadedItem = try? JSONDecoder().decode([MGAchievement].self, from: savedData) {
+           let loadedItem = try? JSONDecoder().decode([SRAchievement].self, from: savedData) {
             achievements = loadedItem
         } else {
             print("No saved data found")
@@ -56,7 +56,7 @@ class SRAchievementsViewModel: ObservableObject {
     }
 }
 
-struct MGAchievement: Codable, Hashable, Identifiable {
+struct SRAchievement: Codable, Hashable, Identifiable {
     var id = UUID()
     var image: String
     var isAchieved: Bool
